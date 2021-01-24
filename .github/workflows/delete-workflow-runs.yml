@@ -10,7 +10,10 @@ on:
         description: 'The minimum runs to keep for each workflow.'
         required: true
         default: 6
-
+      repo:
+        description: 'The repo you want to use.'
+        required: true
+        default: Elletear/JD_scripts
 jobs:
   del_runs:
     runs-on: ubuntu-latest
@@ -19,6 +22,6 @@ jobs:
         uses: Mattraks/delete-workflow-runs@main
         with:
           token: ${{ secrets.PAT }}
-          repository: ${{ github.{Elletear}/{JD_scripts} }}
+          repository: ${{ github.event.inputs. }}
           retain_days: ${{ github.event.inputs.days }}
           keep_minimum_runs: ${{ github.event.inputs.minimum_runs }}
