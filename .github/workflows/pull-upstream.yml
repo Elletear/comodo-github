@@ -13,10 +13,10 @@ jobs:
       with:
         retain_days: 0.02
         keep_minimum_runs: 3
-    - name: LXK9301-JD
+    - name: LXK9301-JD-SYNC
       uses: wei/git-sync@v3
       with:
         source_repo: "LXK9301/jd_scripts"
         source_branch: "master"
         destination_repo: "https://Elletear:${{secrets.PAT}}@github.com/Elletear/JD_scripts.git"
-        destination_branch: "master"
+        destination_branch: "lxk0301-jd"
