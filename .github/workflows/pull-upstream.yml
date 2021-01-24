@@ -1,0 +1,22 @@
+#此文件参考：https://github.com/Mattraks/PULL/blob/main/.github/workflows/Pull.yml
+name: Pull-upstream
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 0 * * *
+jobs:
+  autosync:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Delete workflow runs
+      uses: Mattraks/delete-workflow-runs@v1.2.2
+      with:
+        retain_days: 0.02
+        keep_minimum_runs: 3
+    - name: LXK9301-JD
+      uses: wei/git-sync@v3
+      with:
+        source_repo: "LXK9301/jd_scripts"
+        source_branch: "master"
+        destination_repo: "https://Mattraks:${{secrets.access_token}}@github.com/Elletear/JD_scripts.git"
+        destination_branch: "master"
